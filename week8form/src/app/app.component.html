@@ -1,0 +1,142 @@
+<!-- <h2>Template-drive form</h2>
+<form (ngSubmit)="submit1()" #myForm="ngForm">
+  Nama:
+  <input #nama="ngModel" required type="text" name="nama" [(ngModel)]="formModel.nama"><br />
+
+  <p *ngIf="!nama.valid && nama.touched">Atribut nama harus diisi</p>
+
+  Umur:
+  <input #umur="ngModel" required type="text" name="umur" [(ngModel)]="formModel.umur"><br />
+
+  <p *ngIf="!umur.valid">Atribut umur harus diisi</p>
+
+  <button type="submit" [disabled]="!myForm.valid">Submit</button>
+</form>
+
+<h2>Isian form Anda</h2>
+Nama: {{nama.value}} <br />
+nama valid: {{nama.valid}} <br />
+nama touched: {{nama.touched}} <br />
+nama pristine: {{nama.pristine}} <br />
+nama dirty: {{nama.dirty}} <br />
+
+<h3>Status form Anda</h3>
+valid: {{myForm.valid}} -->
+
+<!--<h1>Student Details</h1>
+<form (ngSubmit)="submit2()" [formGroup]="myReactiveForm">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Nama</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="nama" placeholder="Masukkan nama Anda" />
+    </div>
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="nama.errors?.required && nama.touched">
+    Atribut nama harus diisi
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="nama.errors?.minlength && nama.touched">
+    Atribut nama harus minimal 5 karakter
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="nama.errors?.maxlength && nama.touched">
+    Atribut nama harus maksimal 20 karakter
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Umur</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="umur" placeholder="Masukkan umur Anda" />
+    </div>
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="umur.errors?.required && umur.touched">
+    Atribut umur harus diisi
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="umur.errors?.min && umur.touched">
+    Umur minimal 18 tahun
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="umur.errors?.max && umur.touched">
+    Umur minimal 80 tahun
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" formControlName="check">
+    <label class="form-check-label" for="exampleCheck1">Saya setuju dengan syarat dan ketentuan yang berlaku</label>
+  </div>
+
+  <input type="submit" class="btn btn-primary" value="Submit" [disabled]="myReactiveForm.invalid" />
+</form>-->
+<h1>Student Detail</h1>
+<form (ngSubmit)="submit2()" [formGroup]="myReactiveForm">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Nama</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="nama"/>
+    </div>
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="nama.errors?.required && nama.touched">
+    Name is required
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Faculty</label>
+    <div class="col-sm-10">
+        <select class='form-control'  formControlName="faculty">
+          <option disabled>Select</option>
+          <option *ngFor="let f of faculties" [value]="f">{{f}}</option>
+        </select>
+    </div>
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="Faculty.errors?.required && nama.touched">
+      Faculty is required
+    </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">NIM</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" formControlName="nim"/>
+    </div>
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="nim.errors?.required && nim.touched">
+    NIM is required
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Entry Date</label>
+    <div class="col-sm-10">
+      <input type="date" [(ngModel)]="date" name="date">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Birth Date</label>
+    <div class="col-sm-10">
+      <input type="date" [(ngModel)]="date" name="date">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Address</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Notes</label>
+    <div class="col-sm-10">
+      <textarea rows="4" cols="50"></textarea>
+    </div>
+  </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Phone</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"/>
+      </div>
+    </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="email"/>
+    </div>
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="email.errors?.required && email.touched">
+    Email is required
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="email.errors?.email && email.touched">
+    Email is invalid
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit" [disabled]="myReactiveForm.invalid" />
+</form>
